@@ -1,8 +1,10 @@
 'use strict';
-let TimeMiddleware = require('../middlewares/timeMiddleware');
+const TimeMiddleware = require('../middlewares/timeMiddleware');
+const tokenHelper = require('../helpers/tokenHelper');
+const config = require('../config');
 const Q = require('q');
 
-module.exports = (app) => {
+module.exports = (app, jwt) => {
 
     app.get('/api/time/:date', function (req, res) {
         var date = req.param('date');
@@ -17,14 +19,24 @@ module.exports = (app) => {
     });
 
     app.post('/api/time', function (req, res) {
-        const date = req.body.date;
-        const timeMiddleware = new TimeMiddleware();
-        timeMiddleware.post(date).then(function (response) {
-            res.status(200).json(response);
-        }).catch(function (e) {
-            res.status(500, {
-                error: e
-            });
+        const token = req.body.token || null;
+        tokenHelper.validate(app, token).then(response => {
+            if (response) {
+                const date = req.body.date;
+                const timeMiddleware = new TimeMiddleware();
+                timeMiddleware.post(date).then(function (response) {
+                    res.status(200).json(response);
+                }).catch(function (e) {
+                    res.status(500, {
+                        error: e
+                    });
+                });
+            } else {
+                return res.status(403).send({
+                    success: false,
+                    message: 'No token provided.'
+                });
+            }
         });
     });
 };

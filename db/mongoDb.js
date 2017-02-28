@@ -1,13 +1,13 @@
 'use strict';
 let MongoClient = require('mongodb').MongoClient;
 let Q = require('q');
-const urlDataBase = 'mongodb://admin:v8twanzo@ds163679.mlab.com:63679/timesheet';
+const config = require('../config');
 
 module.exports = {
 
     connect: () => {
         const defer = Q.defer();
-        MongoClient.connect(urlDataBase, function (err, db) {
+        MongoClient.connect(config.database, function (err, db) {
             console.log("Connected correctly to server");
             defer.resolve(db);
         });
