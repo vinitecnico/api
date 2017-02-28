@@ -1,7 +1,14 @@
 'use strict';
 
 let app = require('express')();
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 let timeApi = require('./api/timeApi')(app);
+
+
 
 app.get('/', function (req, res) {
   res.send('Hello World!');

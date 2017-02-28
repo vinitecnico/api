@@ -1,11 +1,36 @@
 'use strict';
 const responseFormat = require('../helpers/responseFormatHelper');
-const timeMongoDb = require('../db/timeMongoDb');
+const TimeMongoDb = require('../db/timeMongoDb');
+const Q = require('q');
 
+class timeMiddleware {
 
-module.exports = {
-	get: (req, res, next) => {
-		timeMongoDb.insert();
-		return responseFormat.success({test: 'aaaa'});
+	constructor() {
+
 	}
-};
+
+	get(date) {
+		const defer = Q.defer();
+		const timeMongoDb = new TimeMongoDb();
+		timeMongoDb.select(date).then(response => {			
+			let cursor = response;			
+			cursor.toArray(function (err, docs) {
+				defer.resolve(responseFormat.success(docs));
+			 });
+		});
+
+		return defer.promise;
+	}
+
+	post(date) {
+		const defer = Q.defer();
+		const timeMongoDb = new TimeMongoDb();
+		timeMongoDb.insert(date).then(response => {
+			defer.resolve(responseFormat.success(response));
+		});
+
+		return defer.promise;
+	}
+}
+
+module.exports = timeMiddleware;
