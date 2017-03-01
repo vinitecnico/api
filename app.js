@@ -35,7 +35,7 @@ app.post('/api/authenticate', function (req, res) {
   }
 });
 
-const server = app.listen(3000, function () {
+const server = app.listen(8080, function () {
   let host = server.address().address;
   host = (host === '::' ? 'localhost' : host);
   const port = server.address().port;
