@@ -35,9 +35,15 @@ app.post('/api/authenticate', function (req, res) {
   }
 });
 
-const server = app.listen(8080, function () {
-  let host = server.address().address;
-  host = (host === '::' ? 'localhost' : host);
-  const port = server.address().port;
-  console.log('listening at http://%s:%s', host, port);
+// const server = app.listen(8080, function () {
+//   let host = server.address().address;
+//   host = (host === '::' ? 'localhost' : host);
+//   const port = server.address().port;
+//   console.log('listening at http://%s:%s', host, port);
+// });
+
+var server = app.listen(8080, function () {
+    var port = server.address().port;
+    console.log("App now running on port", port);
+  });
 });
