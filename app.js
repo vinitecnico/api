@@ -61,7 +61,7 @@ app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
 //   response.render('pages/index')
-  res.send('test blá - blá - blá');
+  response.send('test blá - blá - blá');
 });
 
 app.listen(app.get('port'), function() {
