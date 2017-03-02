@@ -1,5 +1,3 @@
-'use strict';
-
 let app = require('express')();
 
 var bodyParser = require('body-parser');
