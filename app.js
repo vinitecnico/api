@@ -42,7 +42,7 @@ app.post('/api/authenticate', function (req, res) {
 //   console.log('listening at http://%s:%s', host, port);
 // });
 
-var server = app.listen(8080, function () {
+var server = app.listen(5000, function () {
     var port = server.address().port;
     console.log("App now running on port", port);
   });
