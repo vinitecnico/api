@@ -19,10 +19,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get('/', function(request, response) {
-  response.send('test blá - blá - blá');
-});
-
 app.get('/', function (req, res) {
    res.send('timeApi! method - get http://localhost:3000/api/time/20170228 - post http://localhost:3000/api/time {"date": "20170228"}');
 });
