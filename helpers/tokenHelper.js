@@ -1,8 +1,8 @@
-'use strict';
+// 'use strict';
 
-const jwt = require('jsonwebtoken');
-const config = require('../config');
-const Q = require('q');
+// const jwt = require('jsonwebtoken');
+// const config = require('../config');
+// const Q = require('q');
 
 // class tokenHelper {
 // //     static create(app) {
@@ -25,7 +25,8 @@ const Q = require('q');
 // module.exports = tokenHelper;
 
 var tokenHelper = {
-  static create(app) {
+  
+  create: function(app) {
        return jwt.sign(config, app.get('tokenSecret'));
     }
 };
