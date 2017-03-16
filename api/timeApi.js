@@ -2,8 +2,8 @@
 
 // const TimeMiddleware = require('../middlewares/timeMiddleware');
 // const tokenHelper = require('../helpers/tokenHelper');
-const config = require('../config');
-const Q = require('q');
+// const config = require('../config');
+// const Q = require('q');
 
 module.exports = {
 
