@@ -1,8 +1,8 @@
-// 'use strict';
+'use strict';
 
-// const jwt = require('jsonwebtoken');
-// const config = require('../config');
-// const Q = require('q');
+const jwt = require('jsonwebtoken');
+const config = require('../config');
+const Q = require('q');
 
 // class tokenHelper {
 // //     static create(app) {
