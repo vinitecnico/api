@@ -4,7 +4,7 @@ const tokenHelper = require('../helpers/tokenHelper');
 const config = require('../config');
 const Q = require('q');
 
-module.exports = (app, jwt) => {
+module.exports = (app) => {
 
     app.get('/api/time/:date', function (req, res) {
         var date = req.param('date');
