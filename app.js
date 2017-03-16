@@ -5,7 +5,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const config = require('./config');
 const responseFormat = require('./helpers/responseFormatHelper');
-//const tokenHelper = require('./helpers/tokenHelper');
+const tokenHelper = require('./helpers/tokenHelper');
 
 
 app.use(bodyParser.json());
